@@ -1,0 +1,46 @@
+; -- start job file --  ';'或'#'为fio脚本注释
+[global]    # 全局参数
+runtime=300
+ioengine=psync
+
+[job_read]  # job name
+# 测试文件
+filename=${path}/fio_read.test
+size=1g
+# I/O
+bs=4k                   # block size
+direct=1                # direct I/O
+rw=randread
+# 并发
+thread
+numjobs=16
+iodepth=16              # 队列深度
+# 结果分组
+new_group
+group_reporting
+# 测试日志
+write_bw_log=${timestamp}_thd_read      # prefix
+write_lat_log=${timestamp}_thd_read     # prefix
+write_iops_log=${timestamp}_thd_read    # prefix
+
+[job_write]  # job name
+# 测试文件
+filename=${path}/fio_write.test
+size=1g
+# I/O
+bs=4k                   # block size
+direct=1                # direct I/O
+rw=randwrite
+# 并发
+thread
+numjobs=16
+iodepth=16              # 队列深度
+# 结果分组
+new_group
+group_reporting
+# 测试日志
+write_bw_log=${timestamp}_thd_write     # prefix
+write_lat_log=${timestamp}_thd_write    # prefix
+write_iops_log=${timestamp}_thd_write   # prefix
+
+; -- end job file --
