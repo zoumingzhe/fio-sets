@@ -4,9 +4,9 @@ timestamp=`date "+%Y%m%d_%H%M%S"`
 
 job_name=${1}
 tmp_path=`pwd`/temp
-job_path=`pwd`/${1}.job
-log_path=`pwd`/${1}.log/${timestamp}
-result=`pwd`/${1}.log/${timestamp}_${1}.log
+job_path=`pwd`/job/${1}.job
+log_path=`pwd`/log/${1}/${timestamp}
+result=`pwd`/log/${1}/${timestamp}_${1}.log
 
 mkdir -p ${tmp_path}
 mkdir -p ${log_path}
